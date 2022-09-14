@@ -1,0 +1,114 @@
+% Document Definition
+\documentclass[12pt]{book}
+
+% Required Packages
+\usepackage[letterpaper, margin=1in]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{fancyhdr}
+\usepackage{ragged2e}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{times}
+\usepackage{subfiles} % Load me last
+
+% Package Options
+
+% Headings bullshit
+\pagestyle{fancy}
+\fancyhead[L,C]{}
+\fancyhead[R]{SNAME / PROJECT / \thepage}
+\fancyfoot[L,C,R]{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Formatting Stuff
+\setlength{\parindent}{0.5in}
+
+% Macros
+\newcommand{\mkchap}[3]{
+    \newpage
+    \vspace*{3in}
+    \addcontentsline{toc}{chapter}{#1 - #2}
+    \begin{center}
+        Chapter #1
+
+        #2
+
+        {\small #3}
+    \end{center}
+    \vspace{0.5in}
+}
+%%% \mkinfo
+%%% used as \mkinfo{name}{pronouns}{address}{phone}{email}
+\newcommand{\mkinfo}[5]{
+    \begin{flushleft}
+        \singlespacing
+        #1 (#2)\newline
+        #3\newline
+        #4\newline
+        #5
+    \end{flushleft}
+}
+%%% \mktitle
+%%% used as
+%%%   \mktitle{title}{penname}{srcuri}%
+%%%           {legalname}{pronouns}%
+%%%           {address}{phone}{email}%
+%%%           {wc}
+\newcommand{\mktitle}[9]{
+    \begin{titlepage}
+        \mkinfo{#4}{#5}{#6}{#7}{#8}
+        \center
+        \vspace*{3in}
+        #1
+
+        by #2
+
+        \vspace{1in}
+
+        {\tiny
+        As compiled from \LaTeX source on \today.
+
+        A copy of the source can be found at:
+
+        #3
+        }
+        \vspace{\fill}
+        \center #9 words
+    \end{titlepage}
+}
+\newcommand{\mkack}{
+    \newpage
+    \vspace*{3in}
+    \addcontentsline{toc}{chapter}{Acknowledgements}
+    \begin{center}
+        Acknowledgements
+    \end{center}
+    \vspace{0.5in}
+    \subfile{src/ack}
+}
+
+% Document
+\begin{document}
+\begin{doublespacing}
+    \mktitle{PROJECT}{PENNAME}%
+    {REPO}%
+    {LEGALNAME}{PRONOUNS}%
+    {STREETADDR\newline%
+    LASTADDR}{PHONE}%
+    {EMAIL}%
+    {WORDCOUNT}
+
+    \setcounter{page}{1}
+
+    % canon worthy
+    \mkchap{1}{The Datacentre}{A place for all your data}
+    \subfile{src/chapters/thedatacentre}
+
+%   Need acknowledgements before enabling this.
+%   \mkack
+
+\end{doublespacing}
+\end{document}
+
