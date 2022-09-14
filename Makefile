@@ -2,7 +2,7 @@
 BASEBDIR=./build
 BDIR=$(BASEBDIR)/`git show --oneline | head -1 | cut -d" " -f1`
 SDIR=./src
-BNAME=promise-`git show --oneline | head -1 | cut -d" " -f1`
+BNAME=aetherials-`git show --oneline | head -1 | cut -d" " -f1`
 CONF=default.cfg
 SOURCE=main.tex
 TEMP=templ.tex
