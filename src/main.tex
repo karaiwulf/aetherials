@@ -26,13 +26,13 @@
 \setlength{\parindent}{0.5in}
 
 % Macros
+%%% \mkchap
+%%% used as \mkchap{toc number}{title}{subtitle}
 \newcommand{\mkchap}[3]{
     \newpage
     \vspace*{3in}
     \addcontentsline{toc}{chapter}{#1 - #2}
     \begin{center}
-        Chapter #1
-
         #2
 
         {\small #3}
@@ -88,6 +88,16 @@
     \vspace{0.5in}
     \subfile{src/ack}
 }
+\newcommand{\mkfw}{
+    \newpage
+    \vspace*{3in}
+    \addcontentsline{toc}{chapter}{Foreword}
+    \begin{center}
+        Foreword
+    \end{center}
+    \vspace{0.5in}
+    \subfile{src/fw}
+}
 
 % Document
 \begin{document}
@@ -100,10 +110,12 @@
     {EMAIL}%
     {WORDCOUNT}
 
+    \mkfw
+
     \setcounter{page}{1}
 
     % canon worthy
-    \mkchap{1}{The Datacentre}{A place for all your data}
+    \mkchap{1}{The Datacentre}{}
     \subfile{src/chapters/thedatacentre}
 
 %   Need acknowledgements before enabling this.

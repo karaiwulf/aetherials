@@ -1,6 +1,6 @@
 # Build variables
 BASEBDIR=./build
-BDIR=$(BASEBDIR)/`git show --oneline | head -1 | cut -d" " -f1`
+BDIR=$(BASEBDIR)
 SDIR=./src
 BNAME=aetherials-`git show --oneline | head -1 | cut -d" " -f1`
 CONF=default.cfg
@@ -9,7 +9,7 @@ TEMP=templ.tex
 
 # Author and metadata
 # THESE FIELDS MAY NOT CONTAIN ANY SEMICOLONS!
-TITLE=Ætherials
+TITLE=Ætherials: a collection of short stories
 PENNAME=Liette Faerchild
 LEGALNAME=Ren Kararou
 PRONOUNS=fae/faer
@@ -18,7 +18,7 @@ LASTADDR=Denver, CO
 EMAIL=ren@kararou.space
 PHONE=(303)555-4202
 
-all: pdf epub word cleanbuild timestamp 
+all: pdf cleanbuild timestamp 
 
 timestamp: mkbuild
 	if [ -f $(BDIR)/$(BNAME).epub ]; then mv $(BDIR)/$(BNAME).epub $(BDIR)/$(BNAME)-`date -u +%d%m%y-%H%M`.epub; fi
